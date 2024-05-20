@@ -85,8 +85,9 @@ namespace TestWeb
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbl_Products).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                //db.Entry(tbl_Products).State = EntityState.Modified;
+                //await db.SaveChangesAsync();
+                FormFunction.updateProduct(tbl_Products.Product_ID, tbl_Products.Product_Name, tbl_Products.Product_Design, tbl_Products.Product_Color, tbl_Products.Product_Warranty, tbl_Products.CreatedAt);
                 return RedirectToAction("Index");
             }
             return View(tbl_Products);

@@ -14,8 +14,8 @@ Public Class Form1
         Dim prod_design As String = txtb_product_design.Text
         Dim prod_color As String = cmb_product_color.SelectedItem
         Dim prod_warranty As String = ""
-        Dim prod_launch As DateTime = dtp_product_launch.Text
 
+        Dim prod_launch As DateTime = dtp_product_launch.Text
         Dim formattedDate As String = prod_launch.ToString("yyyy-MM-dd HH:mm:ss.fff")
 
         If rb_allowed.Checked = True Then
@@ -38,7 +38,9 @@ Public Class Form1
         Dim prod_design As String = txtb_product_design.Text
         Dim prod_color As String = cmb_product_color.SelectedItem
         Dim prod_warranty As String = ""
+
         Dim prod_launch As DateTime = dtp_product_launch.Text
+        Dim formattedDate As String = prod_launch.ToString("yyyy-MM-dd HH:mm:ss.fff")
 
         If rb_allowed.Checked = True Then
             prod_warranty = "Allowed"
@@ -46,10 +48,8 @@ Public Class Form1
             prod_warranty = "Not Allowed"
         End If
 
-        connection.Open()
-        Dim command As New SqlCommand("Update tbl_Products set Product_Name = '" & prod_name & "', Product_Design = '" & prod_design & "', Product_Color = '" & prod_color & "', Product_Warranty = '" & prod_warranty & "', CreatedAt = '" & prod_launch & "' where Product_ID = '" & prod_id & "'", connection)
-        command.ExecuteNonQuery()
-        connection.Close()
+        updateProduct(prod_id, prod_name, prod_design, prod_color, prod_warranty, formattedDate)
+
         LoadDataInView()
         MessageBox.Show("Successfully Updated the Product")
 
@@ -60,15 +60,7 @@ Public Class Form1
         If MessageBox.Show("Are you sure you want to delete this item?", "Delete Document", MessageBoxButtons.YesNo) = DialogResult.Yes Then
 
             Dim prod_id As Integer = txtb_product_id.Text
-
             deleteProduct(prod_id)
-
-            'Dim prod_id As Integer = txtb_product_id.Text
-
-            'connection.Open()
-            'Dim command As New SqlCommand("Delete tbl_Products where Product_ID = '" & prod_id & "'", connection)
-            'command.ExecuteNonQuery()
-            'connection.Close()
             LoadDataInView()
             MessageBox.Show("Successfully deleted product")
 
