@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestMvcDBModelStoreContainer" CdmEntityContainer="TestMvcDBEntities">
+    <EntitySetMapping Name="tbl_Products">
+      <EntityTypeMapping TypeName="TestMvcDBModel.tbl_Products">
+        <MappingFragment StoreEntitySet="tbl_Products">
+          <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Product_Design" ColumnName="Product_Design" />
+          <ScalarProperty Name="Product_Color" ColumnName="Product_Color" />
+          <ScalarProperty Name="Product_Warranty" ColumnName="Product_Warranty" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
